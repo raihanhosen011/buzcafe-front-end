@@ -1,0 +1,88 @@
+.footer-area h4 {
+  font-weight: 550;
+  font-size: 24px;
+  color: #e4e4e4;
+}
+.footer-logo {
+  width: 6rem;
+  align-self: center;
+}
+.footer-area {
+  padding: 1.8rem 0;
+  background: #171717;
+}
+
+.footer-links ul li a {
+  font-weight: 400;
+  color: #cccaca;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+.footer-social a {
+  font-size: 17px;
+  width: 2rem;
+  display: inline-block;
+  height: 2rem;
+  text-align: center;
+  border: 1px solid #333333;
+  border-radius: 50%;
+  margin: 6px;
+  transition: 0.3s;
+}
+.footer-social a:hover {
+  transform: translateY(-2px);
+}
+.coinmarket {
+  width: 63%;
+}
+
+.footer-area ul{
+  padding-left: 0 !important;
+}
+
+/* ==== SOCIAL ICON : HOVER EFFECT ==== */
+.facebook:hover {
+  color: #1769df;
+  border-color: #1769df;
+}
+.linkedin:hover {
+  color: #1146ce;
+  border-color: #1146ce;
+}
+.twitter:hover {
+  color: #1593de;
+  border-color: #1593de;
+}
+.instagram:hover {
+  color: #e5445e;
+  border-color: #e5445e;
+}
+.pinterest:hover {
+  color: #c9001e;
+  border-color: #c9001e;
+}
+.youtube:hover {
+  color: #f40001;
+  border-color: #f40001;
+}
+.mix:hover {
+  color: #ff8126;
+  border-color: #ff8126;
+}
+.bitcoin:hover {
+  color: #bd995b;
+  border-color: #bd995b;
+}
+.tumblr:hover {
+  color: #1b416b;
+  border-color: #1b416b;
+}
+.medium:hover {
+  color: #505050;
+  border-color: #505050;
+}
+.reddit:hover {
+  color: #ff3f18;
+  border-color: #ff3f18;
+}

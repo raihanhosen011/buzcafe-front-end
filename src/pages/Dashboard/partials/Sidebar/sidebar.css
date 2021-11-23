@@ -1,0 +1,39 @@
+.dashboard__sidebar{
+    padding: 10px 0;
+    color: white;
+    background-color: var(--first-color);  
+}
+
+  .dashboard__sidebar-header {
+    padding: 0 10px;
+  }
+
+  .dashboard__sidebar h5{ 
+    font-size: var(--normal-font-size); 
+  }
+  .dashboard__sidebar p{
+     font-size: var(--smaller-font-size);
+  }
+  
+  .dashboard__sidebar a{
+     color: white;
+     font-size: var(--small-font-size);
+  }
+  .single__menu {
+    padding: 5px 10px;
+    transition: .3s;
+    cursor: pointer;
+  }
+  .single__menu:hover{
+    background: var(--first-color-alt);
+  }
+
+  .menu__list{
+    padding-left: 0;
+    margin-bottom: 0;  
+  }
+
+  .menu__icon {
+    width: 20px;
+    margin-right: 8px;
+}

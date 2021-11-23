@@ -1,0 +1,467 @@
+/*==================== GOOGLE FONTS ====================*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/*==================== VARIABLES CSS ====================*/
+:root {
+  --header-height:hsl(28, 91%, 54%) ;
+
+  /*========== Colors ==========*/
+  /* Change favorite color */
+  --hue-color: 28; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+
+  /* HSL color mode */
+  --first-color: hsl(var(--hue-color), 91%, 54%);
+
+  --first-color-alt: hsl(var(--hue-color), 93%, 50%);
+  --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+
+  --title-color: hsl(var(--hue-color), 8%, 15%);
+  --text-color: hsl(var(--hue-color), 8%, 45%);
+  --text-color-light: hsl(var(--hue-color), 8%, 65%);
+
+  --input-color: hsl(var(--hue-color), 70%, 96%);
+  --body-color: hsl(var(--hue-color), 60%, 99%);
+
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+
+  --container-color: #fff;
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif !important;
+
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* =========== RADIUS ========= */
+  --radius:8px;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+
+/*==================== BASE CSS ====================*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  position: relative;
+  overflow-x:hidden;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 550;
+}
+
+body,input,textarea,button,select,option{
+  font-family: var(--body-font);
+}
+
+a.button:hover{
+  color: #fff;
+}
+input,textarea,select{
+  border: none;
+  outline: none;
+}
+ul{
+  padding-left: 0;
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+section {
+  padding: 2rem 0 4rem;
+}
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--first-color);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: -10px;
+}
+.section__title-field {
+  position: relative;
+  text-align: center;
+}
+.section__title:before {
+  content: '';
+  position: absolute;
+  width: 41px;
+  height: 3px;
+  background: rgb(34, 34, 34);
+  top: 50%;
+  left: 30%;
+}
+.section__title:after {
+  content: '';
+  position: absolute;
+  width: 41px;
+  height: 3px;
+  background: rgb(34, 34, 34);
+  top: 50%;
+  right: 30%;
+}
+.section__title-backdrop {
+  position: absolute;
+  top: -32px;
+  font-size: 66px;
+  color: #80808054;
+  left: 47%;
+}
+
+.section__title,
+.section__subtitle {
+  text-align: center;
+}
+
+
+.section__footer {
+  text-align: center;
+  margin-top: 17px;
+}
+
+.ml-1{
+  margin-left: 8px;
+}
+
+
+/*==================== LAYOUT ====================*/
+.container {
+  max-width: 768px;
+  padding-left: var(--mb-1-5);
+  padding-right: var(--mb-1-5);
+}
+.profile .container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0.9rem 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11);
+}
+
+
+/* ======================== INPUT ===================== */
+.input__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.input__group input,.input__group textarea,.input__group select {
+  padding: 4px 10px;
+  background: var(--input-color);
+  font-size: var(--small-font-size);
+  font-weight: initial;
+}
+.input__group label {
+  margin-bottom: 3px;
+}
+
+/*==================== CUSTOM BUTTONS ====================*/
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  transition: .3s;
+}
+.button:hover {
+  background-color: var(--first-color-alt);
+}
+.button__icon,.button svg {
+  width: var(--h2-font-size);
+  transition: 0.3s;
+  display: flex;
+}
+
+
+.button--flex {
+  display: inline-flex;
+  align-items: center;
+}
+.button--white {
+  background-color: white !important;
+  color: var(--first-color);
+}
+.button--white:hover{
+  background: var(--first-color-alt) !important;
+  color: white;
+}
+
+.button--small {
+  padding: 0.75rem 1rem;
+}
+
+.button--link {
+  padding: 0;
+  background-color: transparent;
+  color: var(--first-color);
+}
+.button--link:hover {
+  background-color: transparent;
+  color: var(--first-color-alt);
+}
+
+.button--outline{
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--first-color);
+  border: 1px solid var(--first-color);;
+}
+
+
+/* ============ FIELD's ============== */
+.input__field{
+  background-color: var(--input-color);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  max-width: 215px;
+  margin-right: 18px;
+}
+.input__field input,.input__field textarea {
+  background: transparent;
+  width: 100%;
+}
+.input__field svg {
+  font-size: 14;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/*========== CUSTOM SCROLL BAR ==========*/
+body::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: var(--scroll-bar-color);
+  border-radius: 0.5rem;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb-color);
+  border-radius: 0.5rem;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-color-light);
+}
+
+
+
+/*==================== MEDIA QUERIES ====================*/
+/* ---- FOR SMALL DEVICES ---- */
+@media screen and (max-width: 350px) {
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+
+  .nav__menu {
+    padding: 2rem 0.25rem 4rem;
+  }
+  .nav__list {
+    column-gap: 0;
+  }
+
+  .buzcafe-details__btns a{
+    width: 100%;
+    text-align: center;
+  }
+  .buzcafe-details__btns a{
+    margin-bottom: 10px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: 0.3s;
+    background-color: var(--body-color);
+  }
+
+  .nav__partial .button{
+    position: absolute;
+    bottom: 7px;
+  }
+
+  .nav__partial .input__field{
+    width: 100%;
+    margin-right: 0;
+    max-width: none !important;
+  }
+
+  .nav__partial{
+    width: 100%;
+  }
+
+
+  .section__title:after{
+    right: 10%;
+  }
+  .section__title:before{
+    left: 10%;
+  }
+  .section__title-backdrop {
+    left: 45%;
+  }
+}
+
+
+/* ---- FOR MEDIUM DEVICES ---- */
+@media screen and (min-width: 768px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  body {
+    margin: 0;
+  }
+  .section {
+    padding: 6rem 0 2rem;
+  }
+  .section__subtitle {
+    margin-bottom: 3rem;
+  }
+  .header {
+    top: 0;
+    bottom: initial;
+  }
+
+  .header,
+  .main,
+  .footer__container {
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+  }
+
+  /* ---- NAV ---- */
+  .nav {
+    column-gap: 1rem;
+    height: calc(var(--header-height) + 11.125rem);
+  }
+  .nav__icon,
+  .nav__close,
+  .nav__toggle {
+    display: none !important;
+  }
+  .nav__list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px !important;
+    column-gap: 2.5rem;
+    margin-left: 30px;
+  }
+  .nav__logo {
+    width: 85px !important;
+  }
+  .nav__menu{
+    margin-left: auto;
+  }
+
+  .nav__menu > div{
+    margin-left: auto;
+  }
+
+  .connect__wallet{
+    top: 0;
+  }
+
+
+  .small--rating .topShop-rating {
+    font-size: 0px;
+  }
+
+  .utilities__card{
+    margin-right: 30px;
+  }
+}
+
+
+/* ---- FOR LARGE DEVICES ---- */
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1050px;
+  }
+
+  .nav__menu {
+    display: flex;
+    flex: auto;
+  }
+}
+
+
+/* Font size for large devices */
+@media screen and (min-width: 968px) {
+  :root {
+    --biger-font-size: 4rem;
+    --big-font-size: 3rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1.1rem;
+    --small-font-size: 1rem;
+    --smaller-font-size: 0.813rem;
+  }
+}

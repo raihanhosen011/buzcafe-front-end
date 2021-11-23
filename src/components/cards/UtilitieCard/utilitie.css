@@ -1,0 +1,14 @@
+
+.utilities__card img {
+    object-fit: contain;
+    max-width: 100%;
+  }
+ 
+
+  .utilities__card {
+    background: #0000001a;
+    display: flex;
+    justify-content: center;
+    height: 138px;
+    cursor: pointer;
+}

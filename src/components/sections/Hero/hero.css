@@ -1,0 +1,9 @@
+/* ================ HERO SECTION =================== */
+.hero{
+    height: 93vh;  
+    background: linear-gradient(rgba(0, 0, 0, 0.308),rgba(0, 0, 0, 0.336)),url('../../../backgrounds/open-image.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+  }
+  

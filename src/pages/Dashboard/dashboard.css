@@ -1,0 +1,66 @@
+/* ========== DASHBOARD CSS =========== */
+.dashboard__content {
+    padding: 15px;
+    background: var(--first-color);
+    color: white;
+}
+.dashboard__content .dashboard__title {
+  margin-bottom: 25px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid aliceblue;
+}
+.form__texts {
+  margin-top: 3rem;
+  font-size: 15px;
+}
+.dashboard__content form button {
+  padding: 5px 14px;
+  margin-top: 9px;
+  cursor: pointer;
+}
+
+/* ===================== DASHBOARD BUZCAFE DETAIL'S ========================== */
+.buzcafe-details table {
+  width: 100%;
+  padding: 5px;
+  background: white;
+  color: black;
+}
+
+.buzcafe-details table tr th {
+  font-weight: 500;
+}
+.buzcafe-details table tr th {
+  border: 1px solid white;
+  padding: 4px 10px;
+}
+.buzcafe-details table tr th img {
+  min-width: 50px;
+}
+.buzcafe-details table tr img {
+  width: 100px;
+  max-width: 100%;
+}
+.buzcafe-details table tr th {
+  background: var(--first-color-alt);
+  color: white;
+}
+.buzcafe-details table tr td {
+  border: 1px solid black;
+  padding: 4px 10px;
+  font-size: var(--small-font-size);
+}
+.buzcafe-details__content{
+  overflow: auto;
+}
+
+.buzcafe-details__btns{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.css-b62m3t-container{
+  color: rgba(0, 0, 0, 0.781);
+}

@@ -1,0 +1,17 @@
+.sidebar {
+    padding: 15px 10px;
+    background: var(--first-color);
+    color: white;
+  }
+  .sidebar ul {
+    padding-left: 0;
+    margin-bottom: 0 !important;
+  }
+  .sidebar ul li {
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .all-service .topShop,.all-shop .topShop,.all-near .topShop {
+    min-height: 390px;
+  }
