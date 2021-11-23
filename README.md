@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+## BuzCafe 
+
+<img src='https://github.com/raihanhosen011/buzcafe-era-swap/blob/master/website-mockup.png?raw=true' alt='buzcafe mockup img' width='80%' />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
