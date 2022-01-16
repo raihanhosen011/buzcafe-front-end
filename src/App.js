@@ -8,6 +8,7 @@ import AllService from './pages/AllService'
 import AllShop from './pages/AllShop'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/home/Home.js'
+import MyShop from './pages/MyShop/MyShop'
 import NearMe from './pages/NearMe'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/all-service' component={AllService} exact />
           <Route path='/near-me' component={NearMe} exact />
           <Route path='/dashboard' component={Dashboard} exact />
+          <Route path='/shop' component={MyShop} exact />
         </Switch>
 
       <Footer/>  
