@@ -20,8 +20,11 @@ function Index() {
     return (
         <>
           <div className='dashboard' >
-             <Hero/>
-
+             {/* <Hero/> */}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <section className='px-2 px-md-4' >
               <div className='row' >
 
@@ -33,9 +36,7 @@ function Index() {
                    <div className='dashboard__content' >
                       {hash == '#payments' && <Payments/> }
                       {hash == '#your-shop' && <YourShop/>}
-                      {hash == '#your-service' && <YourService/>}
                       {hash == '#get-qr' && <QrCode/>}
-                      {hash == '#service-details' && <ServiceDetails/>}
                       {hash == '#business-details' && <BussnessDetails/>}
                       {hash == '#complete-kyc' && <KYC/>}
                    </div> 
