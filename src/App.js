@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard'
 import Home from './pages/home/Home.js'
 import MyShop from './pages/MyShop/MyShop'
 import NearMe from './pages/NearMe'
+import ScanPay from './pages/ScanPay/ScanPay'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/near-me' component={NearMe} exact />
           <Route path='/dashboard' component={Dashboard} exact />
           <Route path='/shop' component={MyShop} exact />
+          <Route path='/scan' component={ScanPay} exact />
         </Switch>
 
       <Footer/>  
