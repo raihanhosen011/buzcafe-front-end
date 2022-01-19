@@ -50,7 +50,7 @@ export default function ScanPay() {
     const checkShop = async (uri) => {
       try{
         const res =  await window.buzcafeInst.Shops(uri);
-        setData(res);
+        setData([uri, ...res]);
         console.log(data);
       }catch(e) {
         setError(true);
