@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import './BussnessDetails.css';
@@ -10,13 +10,14 @@ import { ethers } from 'ethers';
  
 
  
-function Index() {
+function Index(props) {
+  const {address,details} = props;
   const [form, setForm] = useState({
     Name: '',
     Location: '',
     Image: '',
     Contact: '',
-    Category: ''
+    Category: 'Shop'
   });
   const [show, setShow] = useState(false);
 
@@ -31,52 +32,66 @@ function Index() {
     e.preventDefault();
     await sendTransaction(
       window.buzcafeInst,
-      "newShop",
+      !(props.details && props.details.length == 6 && ethers.utils.parseBytes32String(details[1]) != "" ) ?  "updateShop" :"newShop",
       [ethers.utils.formatBytes32String(form.Category),form.Location,form.Name,form.Contact,form.Image],
       "You are successfully listed on buzcafe"
     )
   }
+
+  useEffect(() => {
+    if(props.details && props.details.length == 6){
+        setForm({
+          Name: details[3],
+          Location: details[2],
+          Image: details[5],
+          Contact: details[4],
+          Category: ethers.utils.parseBytes32String(details[1])
+        })
+    }
+  }, [props.details])
+
     return (
         <>
-           <div className='bussness-details' >
+           <div className='bussness-details dashboard__content border rounded container' >
               <h3 className='dashboard__title' >Enter Business Details</h3>
               <div>
                 {show? <img onError={e => setShow(false)} src={form.Image}/>:null}
                 <form onSubmit={handleSubmit}>
-                  <div className='input__group' >
-                    <label>Business name</label>
-                    <input 
-                      placeholder='Enter your business name' 
-                      type='text' 
-                      name='Name'
-                      onChange={handleChange}
-                    /> 
-                  </div>
-                   
-                  <div className='input__group' >
-                    <label> Shop address </label>
-                    <textarea 
-                      placeholder='Enter your shop address' 
-                      style={{height:"80px"}} 
-                      type='text' 
-                      name='Location'
-                      onChange={handleChange}
-                       /> 
-                  </div>
-
-                  <div className='row' >
-                     <div className='col-md-6' > 
-                        <div className='input__group' >
-                          <label> Contact number </label>
-                          <input 
-                            placeholder='Enter contact number' 
-                            type='text' 
-                            name='Contact'
-                            onChange={handleChange}
+                <div className='row' >
+                  <div className='col-md-6' >
+                    <div className='input__group' >
+                      <label>Business name</label>
+                      <input 
+                        placeholder='Enter your business name' 
+                        type='text' 
+                        name='Name'
+                        value={form.Name}
+                        onChange={handleChange}
                       /> 
-                        </div>                     
-                     </div>
-
+                    </div>
+                    
+                    <div className='input__group' >
+                      <label> Shop address </label>
+                      <textarea 
+                        placeholder='Enter your shop address' 
+                        style={{height:"80px"}} 
+                        type='text' 
+                        name='Location'
+                        value={form.Location}
+                        onChange={handleChange}
+                        /> 
+                    </div>
+                    <div className='input__group' >
+                      <label> Contact number </label>
+                      <input 
+                        placeholder='Enter contact number' 
+                        type='text' 
+                        name='Contact'
+                        value={form.Contact}
+                        onChange={handleChange}
+                      /> 
+                      </div>                     
+                    </div>
                   </div>
 
                   <div className='row' >
@@ -87,6 +102,7 @@ function Index() {
                             placeholder='Enter URL' 
                             type='text' 
                             name='Image'
+                        value={form.Image}
                             onChange={e => {handleChange(e);setShow(true)}}
                           /> 
                           <p className='field-note-txt'> if you don't have Image link {"  "}
@@ -108,7 +124,7 @@ function Index() {
                       <div className='input__group' >
                         <label> Category </label>
 
-                        <select name='Category' onChange={handleChange}
+                        <select name='Category' value={form.Category} onChange={handleChange}
                       >
                             {CATEGORY.map(ele => 
                               <option>{ele}</option>)}
@@ -119,7 +135,7 @@ function Index() {
                   <button 
                     type='submit' 
                     className='button button--white'
-                     > Add Shop </button>
+                     >{(props.details && props.details.length == 6 && ethers.utils.parseBytes32String(details[1]) != "" ) ? "Update Shop": "Add Shop"} </button>
                 </form>
               </div>  
            </div>   

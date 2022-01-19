@@ -4,7 +4,7 @@ export default function TransactionCard(props) {
     return (
         <div className='card shadow p-1 px-2 my-1 '>
             <div className='row'>
-                <div  className='col-2 my-auto'>
+                <div  className='col-2 my-auto align-middle'>
                     <div 
                      style={{verticalAlign : 'middle'}}
                      className={`avatar text-center align-items-center  ${props.mode == "RECEIVE" ? 'bg-success' : 'bg-danger' }`}> <i style={{verticalAlign : 'middle'}} className={`fa fa-${props.mode == "RECEIVE" ? 'plus' : 'minus' }`} ></i></div>

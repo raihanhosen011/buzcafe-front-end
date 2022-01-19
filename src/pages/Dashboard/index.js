@@ -1,18 +1,43 @@
 import React, { useEffect, useState } from 'react'
-import Hero from '../../components/sections/Hero'
 import './dashboard.css'
 import BussnessDetails from './partials/BussnessDetails'
 import KYC from './partials/KYC'
 import Payments from './partials/Payments'
 import QrCode from './partials/QrCodeScanner'
-import ServiceDetails from './partials/ServiceDetails'
 import Sidebar from './partials/Sidebar'
-import YourService from './partials/YourServices'
 import YourShop from './partials/YourShop'
 
 function Index() {
     const [hash,setHash] = useState()
+    const [details,setDetails] = useState();
+    const [address, setAddress] = useState("");
+    const fetchDetails = async () => {
+        if(window.address && !details){
+            try{
+                const data = await window.buzcafeInst.Shops(window.address);
+                setDetails([window.address,...data]);
+                console.log(details);
+            }catch(e){
+                console.log(e);
+            }
+        }
+    }
 
+
+    useEffect(() => {
+        const intervalId = setInterval(async () => {
+          if (window.wallet) {
+            setAddress(window.address);
+            await fetchDetails();
+            clearInterval(intervalId);
+          } 
+        }, 1000);
+        return () => {
+          clearInterval(intervalId);
+        };
+
+
+      }, []);
     useEffect(() => {
       setHash(window.location.hash)
     },[window.location.hash])
@@ -29,15 +54,15 @@ function Index() {
               <div className='row' >
 
                 <div className='col-md-3' >
-                  <Sidebar/>  
+                  <Sidebar address={address}/>  
                 </div>
 
                 <div className='col-md-9' >
-                   <div className='dashboard__content' >
-                      {hash == '#payments' && <Payments/> }
-                      {hash == '#your-shop' && <YourShop/>}
-                      {hash == '#get-qr' && <QrCode/>}
-                      {hash == '#business-details' && <BussnessDetails/>}
+                   <div className='mx-auto' >
+                      {hash == '#payments' && <Payments address={address}/> }
+                      {hash == '#your-shop' && <YourShop address={address} details={details}/>}
+                      {hash == '#get-qr' && <QrCode address={address} />}
+                      {hash == '#business-details' && <BussnessDetails address={address} details={details}/>}
                       {hash == '#complete-kyc' && <KYC/>}
                    </div> 
                 </div>

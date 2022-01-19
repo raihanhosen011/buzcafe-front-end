@@ -3,24 +3,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 
-function Index() {
+function Index(props) {
     return (
         <>
            <div className='dashboard__sidebar mb-3' > 
               
               <div className='dashboard__sidebar-header' >
                  <h5>Era swap wallet ID</h5>
-                 <p> 0x20s2ad2000ad3s3356565a6sd </p> 
+                 <p> {props.address} </p> 
               </div>
               
               <div className='dashboard__sidebar-menu' >
                  <ul className='menu__list' >
-                   
-                   <li className='single__menu' >
-                      <Link to="#dashboard" >
-                        <UilDashboard className="menu__icon" /> Dashboard 
-                      </Link>
-                   </li>
                    
                    <li className='single__menu' >
                       <Link to="#your-shop" >
@@ -29,8 +23,8 @@ function Index() {
                    </li>
                    
                    <li className='single__menu' >
-                      <Link to="#your-service" >
-                        <UilFileInfoAlt  className="menu__icon" /> Service Details
+                      <Link to="#business-details" >
+                        <UilFileInfoAlt  className="menu__icon" /> Add/Update Details
                       </Link>
                    </li>
                    

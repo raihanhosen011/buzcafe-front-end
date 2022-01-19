@@ -228,7 +228,7 @@ export default function ConnectWallet() {
       CustomWallets(e);
     });
     (async () => {
-      if (Address) await loadDetails();
+      if (Address) {await loadDetails();window.address = Address;}
     })();
 
     return () => {
