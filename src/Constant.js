@@ -1,3 +1,8 @@
+export const FeatureShop = [
+  '0x58D45F9b7956602291fCF192a7c3bB04cBfeD7bF',
+  
+]
+
 export const CATEGORY = [
   "Shop",
   "Wine Shop",
