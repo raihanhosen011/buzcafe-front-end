@@ -2,6 +2,7 @@ import { UilApps, UilMapPin, UilParcel, UilQrcodeScan, UilSearch, UilShop, UilTi
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../global.css';
+import ConnectWallet from '../../cards/connectWallet';
 import WalletsCard from '../../cards/connectWallet';
 import './header.css';
 
@@ -52,9 +53,8 @@ function Header() {
                            <input placeholder='search..' className='input' />
                         </div>
                         
-                        <a className='button button--flex' onClick={() => setShowWallets(true)} >
-                          <UilUser />
-                          <span className='ms-3' > Connect wallet</span> 
+                        <a className='button button--flex btn outline-light'  >
+                          <ConnectWallet />
                         </a>
                      </div>   
 

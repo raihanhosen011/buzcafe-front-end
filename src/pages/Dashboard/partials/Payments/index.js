@@ -1,78 +1,60 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
+import { logEvents } from '../../../../components/LogEvents';
+import PayTo from '../../../../components/PayTo'
+import Transactions from '../../../../components/Transactions/Transactions';
 
-function index() {
+function Index(props) {
+    const [transfer, setTransfer] = useState("");
+    const [data, setData] = useState();
+    const checkShop = async () => {
+        try{
+          const res =  await window.buzcafeInst.Shops(transfer);
+          setData([transfer, ...res]);
+          console.log(data);
+        }catch(e) {
+          console.log(e);
+        }
+    }
+    useEffect(()=>{
+      if(props.address){
+        const x = logEvents(window.buzcafeInst,"PayTo",[null,props.address,null,null]);
+        const y = logEvents(window.buzcafeInst,"PayTo",[props.address,null,null,null]);
+        if(x && x.isArray()){
+        x.concat(y);
+        x.sort(function (a, b) {
+          return a.blockNumber - b.blockNumber;
+        })
+      }
+        console.log("data" , x);
+      }
+      
+      
+    },[props.address])
+
+
     return (
         <>
           <div className='payments buzcafe-details' >  
-             <div className='row' >
+             {props.address ? <div className='row' >
+              <div className='col-md-8 mb-4' >
+                <h4 className='dashboard__title mb-2' > Payments History </h4> 
+                <Transactions />   
+              </div> 
+              <div className='col-md-6 mb-4' >
+                  <h4 className='dashboard__title mb-2' >Make payment</h4> 
 
-                <div className='col-12 mb-4' >
-                    <h4 className='dashboard__title mb-2' > Payments History </h4> 
+                  {data ? <PayTo data={data} /> : 
+                  <div className='input__group' >
+                    <label>Enter receiver wallet address</label>
+                    <input placeholder='0x00000000000000000000' value={transfer} onChange={e => setTransfer(e.target.value)} type='text' /> 
+                    <button className='button button--white' onClick={checkShop} > Proceed </button>  
+                  </div>  }
 
-                    <div className='buzcafe-details__content' >
-                        <table>
-                            {/* TABLE HEAD */}
-                            <tr>
-                                <th> Name </th> 
-                                <th> From </th> 
-                                <th> Details </th> 
-                            </tr>
-
-                            {/* TABLE BODY */}
-                            
-                            <tr>
-                                <td> Debit 200 ES </td> 
-                                <td> 0x20s2ad2000ad3s3356565a6sd  </td> 
-                                <td> lorem ipsum...... </td>
-                            </tr>
-
-                            <tr>
-                                <td> Debit 200 ES </td> 
-                                <td> 0x20s2ad2000ad3s3356565a6sd  </td> 
-                                <td> lorem ipsum...... </td>
-                            </tr>
-
-                            <tr>
-                                <td> Debit 200 ES </td> 
-                                <td> 0x20s2ad2000ad3s3356565a6sd  </td> 
-                                <td> lorem ipsum...... </td>
-                            </tr>
-
-                        </table>                     
-                    </div>    
-  
-                </div>
-                
-                <div className='col-md-6 mb-4' >
-                   <h4 className='dashboard__title mb-2' >Make payment</h4> 
-
-                   <form>
-                       
-                      <div className='input__group' >
-                         <label>ES amount</label>
-                         <input placeholder='enter amount' type='text' />   
-                      </div>  
-                       
-                      <div className='input__group' >
-                         <label>Enter receiver wallet address</label>
-                         <input placeholder='0x00000000000000000000' type='text' />   
-                      </div>  
-
-                      <button className='button button--white' > Pay </button>  
-                   </form>
-                </div>
-
-                <div className='col-md-6' >
-                   <h4 className='dashboard__title' > ES balance </h4>
-
-                   <div className='bg-white text-dark p-2' >
-                      20000 <b className='ms-1' >ES</b>  
-                   </div>
-                </div>    
-             </div>
+              </div>
+             </div> : <div> Please Connect to wallet</div>}
           </div>   
         </>
     )
 }
 
-export default index
+export default Index
